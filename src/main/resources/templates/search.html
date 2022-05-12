@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
 <body>
@@ -20,7 +20,8 @@
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
+                        th:checked="${column.key == 'all'}"
+                />
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
 
@@ -37,7 +38,7 @@
     <hr />
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
-
+    <table th:replace="fragments::list-of-jobs"></table>
 </div>
 
 </body>
