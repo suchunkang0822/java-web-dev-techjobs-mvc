@@ -11,13 +11,4 @@ public class Search {
         this.type = type;
     }
 
-    //    private SearchType type;
-//
-//    public SearchType getType() {
-//        return type;
-//    }
-//
-//    public void setType(SearchType type) {
-//        this.type = type;
-//    }
 }

@@ -44,3 +44,12 @@ label {
 .centered {
     text-align: center;
 }
+
+table.table-striped tr td p{
+    font-weight: bold;
+
+}
+
+table.table-striped tr td span{
+    font-weight: normal;
+}

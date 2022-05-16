@@ -16,12 +16,12 @@ import static org.launchcode.javawebdevtechjobsmvc.controllers.ListController.co
  */
 @Controller
 @RequestMapping("search")
-public class SearchController {
+public class SearchController extends TechJobsController{
 
     @RequestMapping(value = "")
     public String search(Model model) {
         model.addAttribute("columns", columnChoices);
-//        model.addAttribute("search", new Search());
+        model.addAttribute("search", new Search() );
         return "search";
     }
 
@@ -29,17 +29,21 @@ public class SearchController {
     @PostMapping("/results")
     public String displaySearchResults(Model model,
                                        @RequestParam(required = false) String searchType,
-                                       @RequestParam(required = false) String searchTerm
-                                       ){
+                                       @RequestParam(required = false) String searchTerm,
+                                       Search search){
         ArrayList<Job> jobs;
         if(searchTerm == "all" || searchTerm.isEmpty()){
             jobs = JobData.findAll();
         }else{
             jobs = JobData.findByColumnAndValue(searchType,searchTerm);
         }
+
+        if(searchType != "all"){
+            search.setType(searchType);
+        }
         model.addAttribute("jobs",jobs);
         model.addAttribute("columns", columnChoices);
-//        model.addAttribute("search", search);
+        model.addAttribute("search", search);
         return "search";
     }
 }
